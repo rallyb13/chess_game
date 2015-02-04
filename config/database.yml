@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: chess_development
+
+test:
+  adapter: postgresql
+  database: chess_test
