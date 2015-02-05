@@ -17,7 +17,7 @@ class Piece < ActiveRecord::Base
       return false
     else
       y_matches.each do |piece|
-        if piece.x.between?(x_low, x_high)
+        if piece.x.between?(x_low + 1, x_high - 1)
         return true
         else
         return false
@@ -39,7 +39,7 @@ class Piece < ActiveRecord::Base
       return false
     else
       x_matches.each do |piece|
-        if piece.y.between?(y_low, y_high)
+        if piece.y.between?(y_low +1, y_high - 1)
         return true
         else
         return false
@@ -70,6 +70,16 @@ class Piece < ActiveRecord::Base
       end
     else
       return false
+    end
+  end
+
+  def space_available? (x,y)
+    my_team = self.white
+    occupant = Piece.find_by_x_and_y(x,y)
+    if occupant.white == my_team
+      false
+    else
+      true
     end
   end
 

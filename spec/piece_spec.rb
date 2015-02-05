@@ -20,13 +20,14 @@ describe Piece do
 
   describe '.horizontal_obstruction?' do
     it 'will return false if there are no pieces in the way' do
+      Piece.create(x:1, y:1, type:'Rook')
       expect(Piece.horizontal_obstruction?(1,1,8,1)).to eq(false)
     end
     it 'will return true if there are pieces in the way' do
       Piece.create({:x => 4, :y => 1, :type => "Rook"})
       expect(Piece.horizontal_obstruction?(1,1,8,1)).to eq(true)
     end
-    it 'will return true if there are pieces in the way goint the other direction' do
+    it 'will return true if there are pieces in the way going the other direction' do
       Piece.create(:x => 4, :y => 1, :type => "Rook")
       expect(Piece.horizontal_obstruction?(8,1,1,1)).to eq(true)
     end
@@ -78,4 +79,17 @@ describe Piece do
       expect(Piece.diagonal_obstruction?(5,1,3,3)).to eq(true)
     end
   end
+
+  describe '#space_available?' do
+    it 'returns true if a space is ok to move to' do
+      test_bishop = Bishop.create(x:1, y:1, white: true)
+      Bishop.create(x:3, y:3, white: false)
+      expect(test_bishop.space_available?(3,3)).to eq(true)
+    end
+  end
+
+
+
+
+
 end
