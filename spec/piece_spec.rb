@@ -5,7 +5,7 @@ describe Piece do
   it {should belong_to :game}
 
   it 'will not accept only x value outside range' do
-    test_piece = Piece.create({:x => 9, :y => 1})
+    test_piece = Piece.create(:x => 9, :y => 1)
     expect(test_piece.save).to eq(false)
   end
   it 'will accept x values 1-8' do

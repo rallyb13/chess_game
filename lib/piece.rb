@@ -4,7 +4,6 @@ class Piece < ActiveRecord::Base
   validates(:x, :presence => true, inclusion: { in: (1..8) })
   validates(:y, :presence => true, inclusion: { in: (1..8) })
 
-
   def self.horizontal_obstruction?(x1,y1,x2,y2)
     y_matches = Piece.where(y: y1)
     if x1 > x2
@@ -73,6 +72,4 @@ class Piece < ActiveRecord::Base
       return false
     end
   end
-
-
 end
