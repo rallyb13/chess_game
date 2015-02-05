@@ -1,0 +1,17 @@
+td {
+  height: 50px;
+  width: 50px;
+}
+
+#chessboard {
+  border: 5px solid #333;
+}
+
+#chessboard td {
+  background: #FFF;
+}
+
+#chessboard tr:nth-child(odd) td:nth-child(even),
+#chessboard tr:nth-child(even) td:nth-child(odd) {
+  background: #000;
+}
