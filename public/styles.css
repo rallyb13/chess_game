@@ -1,10 +1,11 @@
 td {
   height: 50px;
   width: 50px;
+  text-align: center;
 }
 
 #chessboard {
-  border: 5px solid #333;
+  border: 5px solid #825201;
 }
 
 #chessboard td {
@@ -13,5 +14,13 @@ td {
 
 #chessboard tr:nth-child(odd) td:nth-child(even),
 #chessboard tr:nth-child(even) td:nth-child(odd) {
-  background: #000;
+  background: #a37547;
+}
+#chessboard tr:nth-child(even) td:nth-child(even),
+#chessboard tr:nth-child(odd) td:nth-child(odd) {
+  background: #b69b4c;
+}
+
+.yin {
+  color: white;
 }
