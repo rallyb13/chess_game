@@ -2,18 +2,14 @@
 <div class='table-responsive'>
   <table id='chessboard' class='table table-bordered' cellpadding="0" cellspacing="0">
     <tr>
-      <td>
-        <span class='glyphicon glyphicon-tower yin'></span>
-      </td>
-      <td>
-        <span class='glyphicon glyphicon-tower yin'></span>
-      </td>
-      <td><span class='glyphicon glyphicon-tower yang'></span></td>
-      <td><span class='glyphicon glyphicon-tower yang'></span></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><%= Piece.render(1,8) %></td>
+      <td><%= Piece.render(2,8) %></td>
+      <td><%= Piece.render(3,8) %></td>
+      <td><%= Piece.render(4,8) %></td>
+      <td><%= Piece.render(5,8) %></td>
+      <td><%= Piece.render(6,8) %></td>
+      <td><%= Piece.render(7,8) %></td>
+      <td><%= Piece.render(8,8) %></td>
     </tr>
     <tr>
       <td></td>
@@ -76,14 +72,14 @@
       <td></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><%= @x8y1 %></td>
+      <td><%= Piece.render(1,1) %></td>
+      <td><%= Piece.render(2,1) %></td>
+      <td><%= Piece.render(3,1) %></td>
+      <td><%= Piece.render(4,1) %></td>
+      <td><%= Piece.render(5,1) %></td>
+      <td><%= Piece.render(6,1) %></td>
+      <td><%= Piece.render(7,1) %></td>
+      <td><%= Piece.render(8,1) %></td>
     </tr>
   </table>
 </div>

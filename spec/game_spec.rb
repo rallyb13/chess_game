@@ -8,6 +8,11 @@ describe Game do
     expect(test_game.white_turn).to eq(true)
   end
 
+  it "creates pieces before the game starts" do
+    game1 = Game.create
+    expect(game1.pieces.any?).to eq(true)
+  end
+
   describe "#turn" do
     it "will change whose turn it is" do
       game1 = Game.create(white_turn: true)
@@ -15,5 +20,4 @@ describe Game do
       expect(game1.white_turn).to eq(false)
     end
   end
-
 end
