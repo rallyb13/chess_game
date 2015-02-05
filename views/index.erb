@@ -1,11 +1,5 @@
 <br>
 
-<form action="/index" method="post">
-  <div class
-    <label for="piece">Piece</label>
-</form>
-
-
 <div class='table-responsive'>
   <table id='chessboard' class='table table-bordered' cellpadding="0" cellspacing="0">
     <tr>
@@ -90,3 +84,29 @@
     </tr>
   </table>
 </div>
+
+<% if @game.white_turn? %>
+  <form action="/index" method="post">
+    <select name="piece">
+      <% @white_pieces.each do |piece| %>
+      <option value="<%= piece.id %>"><%= piece.type %>: <%= piece.x %>, <%= piece.y %></option>
+      <% end %>
+    </select>
+    <p>Move to:</p>
+    <input type="text" name="x_value" placeholder="x value" class="form-control" required>
+    <input type="text" name="y_value" placeholder="y value" class="form-control" required>
+    <button action="submit" class="btn btn-success">White Turns Move</button>
+  </form>
+<% else %>
+  <form action="/index" method="post">
+    <select name="piece">
+      <% @black_pieces.each do |piece| %>
+      <option value="<%= piece.id %>"><%= piece.type %>: <%= piece.x %>, <%= piece.y %></option>
+      <% end %>
+    </select>
+    <p>Move to:</p>
+    <input type="text" name="x_value" placeholder="x value" class="form-control" required>
+    <input type="text" name="y_value" placeholder="y value" class="form-control" required>
+    <button action="submit" class="btn btn-success">Black Turns Move</button>
+  </form>
+<% end %>
