@@ -16,13 +16,24 @@ describe(Rook) do
     end
     it "will not allow a rook to move horizontal through a piece in the way" do
       rook1 = Rook.create(x: 1, y: 1, white: true)
-      Piece.create(x: 4, y: 1)
+      Piece.create(x: 4, y: 1, white: true)
       expect(rook1.move?(6,1)).to eq(false)
     end
     it "will not allow a rook to move vertically through a piece in the way" do
       rook1 = Rook.create(x: 1, y: 1, white: true)
-      Piece.create(x: 1, y: 5)
+      Piece.create(x: 1, y: 5, white: false)
       expect(rook1.move?(1,8)).to eq(false)
     end
+    it "will allow a rook to move onto an opponents piece" do
+      rook1 = Rook.create(x: 1, y: 1, white: true)
+      Piece.create(x: 1, y: 5, white: false)
+      expect(rook1.move?(1,5)).to eq(true)
+    end
+    it "will not allow a rook to move onto its own piece" do
+      rook1 = Rook.create(x: 1, y: 1, white: true)
+      Piece.create(x: 1, y: 5, white: true)
+      expect(rook1.move?(1,5)).to eq(false)
+    end
   end
+
 end

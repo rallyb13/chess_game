@@ -88,6 +88,13 @@ describe Piece do
     end
   end
 
+  describe "#move_it" do
+    it "will change the location of the piece in the database" do
+      rook1 = Rook.create(x: 8, y: 8, white: false)
+      rook1.move_it(6,8)
+      expect(rook1.x).to eq(6)
+    end
+  end
 
 
 

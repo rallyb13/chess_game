@@ -76,7 +76,9 @@ class Piece < ActiveRecord::Base
   def space_available? (x,y)
     my_team = self.white
     occupant = Piece.find_by_x_and_y(x,y)
-    if occupant.white == my_team
+    if occupant == nil
+      true
+    elsif occupant.white == my_team
       false
     else
       true
@@ -102,6 +104,15 @@ class Piece < ActiveRecord::Base
     else
       ""
     end
+  end
+
+  def move_it(destination_x,destination_y)
+    captured = Piece.find_by_x_and_y(destination_x,destination_y)
+    if captured != nil
+      captured.destroy
+    end
+    self.x = destination_x
+    self.y = destination_y
   end
 
 
