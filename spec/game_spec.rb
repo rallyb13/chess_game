@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Game do
-  it { should have_many :players }
+  it { should have_many :pieces }
 
   it "always sets up this game with white moving first" do
     test_game = Game.create

@@ -1,5 +1,5 @@
 class Game < ActiveRecord::Base
-  has_many :players
+  has_many :pieces
 
   before_create :white_first
 

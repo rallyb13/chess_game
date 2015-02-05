@@ -1,5 +1,5 @@
 class Piece < ActiveRecord::Base
-  belongs_to :player
+  belongs_to :game
 
   validates(:x, :presence => true, inclusion: { in: (1..8) })
   validates(:y, :presence => true, inclusion: { in: (1..8) })
@@ -35,7 +35,6 @@ class Piece < ActiveRecord::Base
   end
 
   def self.horizontal_clear(x1,y1,x2,y2)
-binding.pry
     if x1 > x2
       x_low = x2
       x_high = x1
