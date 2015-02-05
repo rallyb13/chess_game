@@ -4,38 +4,52 @@ class Piece < ActiveRecord::Base
   validates(:x, :presence => true, inclusion: { in: (1..8) })
   validates(:y, :presence => true, inclusion: { in: (1..8) })
 
-  scope(:between_ys, lambda do |y1, y2|
-    where("y >= :y1 AND y <= :y2",
-          { :y1 => y1, :y2 => y2 })
-  end)
 
-  scope(:between_xs, lambda do |x1, x2|
-    where("x >= :x1 AND x <= :x2",
-          { :x1 => x1, :x2 => x2 })
-  end)
-
-  def self.y_match(y1)
-    y_matches = []
-    Piece.all.each do |piece|
-      if piece.y == y1
-        y_matches.push(piece)
+  def self.horizontal_obstruction?(x1,y1,x2,y2)
+    y_matches = Piece.where(y: y1)
+    if x1 > x2
+      x_low = x2
+      x_high = x1
+    elsif x1 < x2
+      x_low = x1
+      x_high = x2
+    end
+    if y_matches.empty?
+      return false
+    else
+      y_matches.each do |piece|
+        if piece.x.between?(x_low, x_high)
+        return true
+        else
+        return false
+      end
       end
     end
-    y_matches
   end
 
-  def self.x_match(x1)
-    x_matches = []
-    Piece.all.each do |piece|
-      if piece.x == x1
-        x_matches.push(piece)
+  def self.vertical_obstruction?(x1,y1,x2,y2)
+    x_matches = Piece.where(x: x1)
+    if y1 > y2
+      y_low = y2
+      y_high = y1
+    elsif y1 < y2
+      y_low = y1
+      y_high = y2
+    end
+    if x_matches.empty?
+      return false
+    else
+      x_matches.each do |piece|
+        if piece.y.between?(y_low, y_high)
+        return true
+        else
+        return false
+      end
       end
     end
-    x_matches
   end
 
-  def self.horizontal_clear(x1,y1,x2,y2)
-binding.pry
+  def self.diagonal_obstruction?(x1, y1, x2, y2)
     if x1 > x2
       x_low = x2
       x_high = x1
@@ -44,26 +58,20 @@ binding.pry
       x_high = x2
     end
 
-    y_matches = Piece.y_match(y1)
-    blocking_pieces = y_matches.between_xs(x_low, x_high)
-
-    if blocking_pieces.any?
-       false
+    if Piece.any?
+      Piece.all.each do |piece|
+        x_abs = (piece.x - x1).abs
+        y_abs = (piece.y - y1).abs
+        if x_abs == y_abs && piece.x.between?(x_low, x_high)
+          return true
+        else
+          return false
+        end
+      end
     else
-      true
+      return false
     end
   end
 
-
-  #   y_matches = Piece.find_all_by_y(y1) || []
-  #   (x_low + 1 .. x_high - 1).each do |individual_x|
-  #     y_matches.each do |piece|
-  #       if piece.x == individual_x
-  #         clear = false
-  #       end
-  #     end
-  #   end
-  #   clear
-  # end
 
 end
