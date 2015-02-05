@@ -28,4 +28,18 @@ describe Piece do
     end
   end
 
+  describe '.render' do
+    it "will return the rook's html for a specific location" do
+      Piece.create(x: 1, y: 1, type: "Rook", white: true)
+      expect(Piece.render(1, 1)).to eq ("<span class='glyphicon glyphicon-tower yin'></span>")
+    end
+    it "will return the bishop's html for a specific location" do
+      Bishop.create(x: 2, y: 2, white: false)
+      expect(Piece.render(2, 2)).to eq ("<span class='glyphicon glyphicon-bishop'></span>")
+    end
+    it "will return empty string at empty location" do
+      expect(Piece.render(8, 8)).to eq ("")
+    end
+  end
+
 end

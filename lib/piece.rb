@@ -65,4 +65,24 @@ class Piece < ActiveRecord::Base
   #   clear
   # end
 
+  def self.render(x,y)
+    content = Piece.find_by_x_and_y(x,y)
+    if content != nil
+      returned = "<span class='glyphicon glyphicon-"
+      piece = content.type      
+      if piece == "Rook"
+        returned = returned + "tower"
+      elsif piece == "Bishop"
+        returned = returned + "bishop"
+      end
+      if content.white
+        returned = returned + " yin'></span>"
+      else
+        returned = returned + "'></span>"
+      end
+    else
+      ""
+    end
+  end
+
 end
