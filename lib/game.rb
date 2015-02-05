@@ -1,20 +1,19 @@
 class Game < ActiveRecord::Base
   has_many :pieces
 
-  before_create :white_first
-  after_create :add_pieces
+  after_create :add_pieces, :white_first
 
   def turn
-    if self.white_turn? == true
-      self.update(:white_turn => false)
+    if self.white_turn == true
+      self.update(white_turn: false)
     else
-      self.update(:white_turn => true)
+      self.update(white_turn: true)
     end
   end
 
   private
     def white_first
-      self.update(:white_turn => true)
+      self.update(white_turn: true)
     end
 
     def add_pieces
