@@ -5,7 +5,6 @@ class Piece < ActiveRecord::Base
   validates(:y, :presence => true, inclusion: { in: (1..8) })
 
   def self.horizontal_obstruction?(x1,y1,x2,y2)
-    y_matches = Piece.where(y: y1)
     if x1 > x2
       x_low = x2
       x_high = x1
@@ -13,21 +12,21 @@ class Piece < ActiveRecord::Base
       x_low = x1
       x_high = x2
     end
+    returned = false
+    y_matches = Piece.where(y: y1)
     if y_matches.empty?
-      return false
+      returned = false
     else
       y_matches.each do |piece|
         if piece.x.between?(x_low + 1, x_high - 1)
-        return true
-        else
-        return false
-      end
+          returned = true
+        end
       end
     end
+    returned
   end
 
   def self.vertical_obstruction?(x1,y1,x2,y2)
-    x_matches = Piece.where(x: x1)
     if y1 > y2
       y_low = y2
       y_high = y1
@@ -35,17 +34,18 @@ class Piece < ActiveRecord::Base
       y_low = y1
       y_high = y2
     end
+    returned = false
+    x_matches = Piece.where(x: x1)
     if x_matches.empty?
-      return false
+      returned = false
     else
       x_matches.each do |piece|
         if piece.y.between?(y_low +1, y_high - 1)
-        return true
-        else
-        return false
-      end
+          returned = true
+        end
       end
     end
+    returned
   end
 
 
@@ -111,8 +111,7 @@ class Piece < ActiveRecord::Base
     if captured != nil
       captured.destroy
     end
-    self.x = destination_x
-    self.y = destination_y
+    self.update(x:destination_x, y:destination_y)
   end
 
 

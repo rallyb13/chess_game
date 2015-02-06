@@ -19,7 +19,7 @@ post '/game' do
   y_value = params.fetch('y_value').to_i
   piece = Piece.find(params.fetch('piece').to_i)
   if piece.move?(x_value, y_value)
-    piece.update(x: x_value,y: y_value)
+    piece.move_it(x_value,y_value)
     Game.first.turn
   end
   redirect '/game'

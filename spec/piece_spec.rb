@@ -24,10 +24,12 @@ describe Piece do
       expect(Piece.horizontal_obstruction?(1,1,8,1)).to eq(false)
     end
     it 'will return true if there are pieces in the way' do
+      Piece.create(x:1, y:1, type:'Rook')
       Piece.create({:x => 4, :y => 1, :type => "Rook"})
       expect(Piece.horizontal_obstruction?(1,1,8,1)).to eq(true)
     end
     it 'will return true if there are pieces in the way going the other direction' do
+      Piece.create(x:1, y:1, type:'Rook')
       Piece.create(:x => 4, :y => 1, :type => "Rook")
       expect(Piece.horizontal_obstruction?(8,1,1,1)).to eq(true)
     end
@@ -35,13 +37,16 @@ describe Piece do
 
   describe '.vertical_obstruction?' do
     it 'will return false if there are no pieces in the way' do
+      Piece.create(x:1, y:8, type:'Rook')
       expect(Piece.vertical_obstruction?(1,8,1,1)).to eq(false)
     end
     it 'will return true if there are pieces in the way' do
+      Piece.create(x:1, y:8, type:'Rook')
       Piece.create({:x => 1, :y => 4, :type => "Rook"})
       expect(Piece.vertical_obstruction?(1,8,1,1)).to eq(true)
     end
     it 'will return true if there are pieces in the way going the other direction' do
+      Piece.create(x:1, y:1, type:'Rook')
       Piece.create(:x => 1, :y => 5, :type => "Rook")
       expect(Piece.vertical_obstruction?(1,1,1,8)).to eq(true)
     end
