@@ -95,6 +95,8 @@ class Piece < ActiveRecord::Base
         returned = returned + "tower"
       elsif piece == "Bishop"
         returned = returned + "bishop"
+      elsif piece == "Knight"
+        returned = returned + "knight"
       end
       if content.white
         returned = returned + " yin'></span>"
