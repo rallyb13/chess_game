@@ -12,6 +12,7 @@ get '/' do
 end
 
 get '/game' do
+  @message = ""
   @game = Game.first
   @black_pieces = Piece.all.where(white: false)
   @white_pieces = Piece.all.where(white: true)
@@ -25,6 +26,12 @@ post '/game' do
   if piece.move?(x_value, y_value)
     piece.move_it(x_value,y_value)
     Game.first.turn
+    redirect '/game'
+  else
+    @message = "Invalid move! Try again."
+    @game = Game.first
+    @black_pieces = Piece.all.where(white: false)
+    @white_pieces = Piece.all.where(white: true)
+    erb :game
   end
-  redirect '/game'
 end
