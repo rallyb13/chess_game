@@ -1,4 +1,5 @@
 class Rook < Piece
+
   def move? (destination_x,destination_y)
     if self.space_available?(destination_x, destination_y)
       if (self.x == destination_x)
