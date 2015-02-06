@@ -48,7 +48,6 @@ class Piece < ActiveRecord::Base
     obstruction
   end
 
-
   def self.diagonal_obstruction?(x1, y1, x2, y2)
     if x1 > x2
       x_low = x2
@@ -84,6 +83,9 @@ class Piece < ActiveRecord::Base
     end
   end
 
+  def on_board? (x, y)
+    (1..8).include?(x) && (1..8).include?(y)
+  end
 
   def self.render(x,y)
     content = Piece.find_by_x_and_y(x,y)
