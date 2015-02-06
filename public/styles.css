@@ -1,3 +1,9 @@
+body {
+  background-image: url(/bg.jpg);
+  background-size: cover;
+  background-repeat: none;
+}
+
 td {
   height: 50px;
   width: 50px;
@@ -9,6 +15,10 @@ td {
   padding-bottom: 90%;
 }*/
 
+span.glyphicon {
+  font-size: 1.5em;
+}
+
 #chessboard {
   border: 5px solid #825201;
 }
@@ -19,11 +29,13 @@ td {
 
 #chessboard tr:nth-child(odd) td:nth-child(even),
 #chessboard tr:nth-child(even) td:nth-child(odd) {
-  background: #a37547;
+  background-image: url(/grain_dark.jpeg);
+  /*background: #a37547;*/
 }
 #chessboard tr:nth-child(even) td:nth-child(even),
 #chessboard tr:nth-child(odd) td:nth-child(odd) {
-  background: #b69b4c;
+  background-image: url(/grain_light.jpeg);
+  /*background: #b69b4c;*/
 }
 
 .yin {
