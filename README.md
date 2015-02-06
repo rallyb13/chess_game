@@ -4,8 +4,8 @@ as an exercise for Epicodus programming school.
 
 ##Setup Instructions:
 
-Gems Used:
-
+###Gems Used:
+```
 sinatra
 sinatra-contrib
 sinatra-activerecord
@@ -14,32 +14,37 @@ pg
 pry
 rspec
 shoulda-matchers
-Install Bundler:
+```
+###Install Bundler:
 ```
 $ gem install bundler
 ```
-Run Bundler:
+###Run Bundler:
 ```
 $ bundle
 ```
-Start the database:
+###Start the database:
 ```
 $ postgres
 ```
-Create databases:
+###Create databases:
 ```
 $ rake db:create
 $ rake db:migrate
 $ rake db:test:prepare
 ```
-Run the Sinatra application:
+###Run the Sinatra application:
 ```
 $ ruby app.rb
-```
-Navigate to `localhost:4567` witha browser and enjoy!
 
-Authors
+Navigate to `localhost:4567` with a browser and enjoy!
+```
+###Bug Reports
+```
+Pawn movement has some know glitches.  In particular, moving from (1,2) to (2,4).
+```
+###Authors
 
 Jackie Fletcher, Alex Kaufman, Benjamin Herson, and Gabe Finch
 
-MIT License
+####MIT License
