@@ -40,6 +40,39 @@ describe Pawn do
       pawn2 = Pawn.create(x: 4, y: 4, white: false)
       expect(pawn1.move?(4,4)).to eq(false)
     end
+
+    it "will allow a white pawn to move two spaces forward off the home row" do
+      pawn1 = Pawn.create(x:7, y:2, white:true)
+      expect(pawn1.move?(7,4)).to eq(true)
+    end
+
+    it "will allow a black pawn to move two spaces forward off the home row" do
+      pawn1 = Pawn.create(x:7, y:7, white:false)
+      expect(pawn1.move?(7,5)).to eq(true)
+    end
+
+    it "will not allow a white pawn to move two space forward once it's left home row" do
+      pawn1 = Pawn.create(x:4, y:4, white: true)
+      expect(pawn1.move?(4,6)).to eq(false)
+    end
+
+    it "will not allow a white pawn to move two space forward with another pawn there" do
+      pawn1 = Pawn.create(x:4, y:2, white: true)
+      pawn2 = Pawn.create(x:4, y:4, white: true)
+      expect(pawn1.move?(4,4)).to eq(false)
+    end
+
+    it "will not allow a white pawn to move two space forward with another pawn in the way" do
+      pawn1 = Pawn.create(x:4, y:2, white: true)
+      pawn2 = Pawn.create(x:4, y:3, white: true)
+      expect(pawn1.move?(4,4)).to eq(false)
+    end
+
+    it "will not allow a black pawn to move two spaces forward with another pawn in the way" do
+      pawn1 = Pawn.create(x:5, y:7, white:false)
+      pawn2 = Pawn.create(x:5, y:6, white:true)
+      expect(pawn1.move?(5,5)).to eq(false)
+    end
   end
 
 end
