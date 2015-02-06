@@ -2,11 +2,21 @@ class Pawn < Piece
 
   def move? (destination_x, destination_y)
     obstruction = Piece.find_by_x_and_y(destination_x,destination_y)
+    obstructing_white = Piece.find_by_x_and_y(destination_x, 3)
+    obstructing_black = Piece.find_by_x_and_y(destination_x, 6)
     if obstruction == nil
       if white == true
-        self.y + 1 == destination_y && self.x == destination_x
+        if self.y == 2 && destination_y == 4 && obstructing_white == nil
+          return true
+        else
+          self.y + 1 == destination_y && self.x == destination_x
+        end
       elsif white == false
+        if self.y == 7 && destination_y == 5 && obstructing_black == nil
+          return true
+        else
         self.y - 1 == destination_y && self.x == destination_x
+        end
       else
         return false
       end
