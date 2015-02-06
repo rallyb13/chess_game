@@ -73,6 +73,11 @@ describe Pawn do
       pawn2 = Pawn.create(x:5, y:6, white:true)
       expect(pawn1.move?(5,5)).to eq(false)
     end
+
+    it "will not allow a diagonal movement with the two space forward pawn initial move" do
+      pawn1 = Pawn.create(x:2, y:2, white:true)
+      expect(pawn1.move?(3,4)).to eq(false)
+    end
   end
 
 end

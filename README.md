@@ -41,10 +41,13 @@ Navigate to `localhost:4567` with a browser and enjoy!
 ```
 ###Bug Reports
 ```
-Pawn movement has some know glitches.  In particular, moving from (1,2) to (2,4).
+Zarro Boogs
 ```
 ###Authors
 
-Jackie Fletcher, Alex Kaufman, Benjamin Herson, and Gabe Finch
+Benjamin Herson
+Jackie Fletcher
+Alex Kaufman
+Gabe Finch
 
 ####MIT License
