@@ -3,6 +3,11 @@ td {
   width: 50px;
   text-align: center;
 }
+/*
+#chessboard table {
+  width: 90%;
+  padding-bottom: 90%;
+}*/
 
 #chessboard {
   border: 5px solid #825201;
