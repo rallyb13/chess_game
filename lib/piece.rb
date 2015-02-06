@@ -12,18 +12,18 @@ class Piece < ActiveRecord::Base
       x_low = x1
       x_high = x2
     end
-    returned = false
+    obstruction = false
     y_matches = Piece.where(y: y1)
     if y_matches.empty?
-      returned = false
+      obstruction = false
     else
       y_matches.each do |piece|
         if piece.x.between?(x_low + 1, x_high - 1)
-          returned = true
+          obstruction = true
         end
       end
     end
-    returned
+    obstruction
   end
 
   def self.vertical_obstruction?(x1,y1,x2,y2)
@@ -34,18 +34,18 @@ class Piece < ActiveRecord::Base
       y_low = y1
       y_high = y2
     end
-    returned = false
+    obstruction = false
     x_matches = Piece.where(x: x1)
     if x_matches.empty?
-      returned = false
+      obstruction = false
     else
       x_matches.each do |piece|
         if piece.y.between?(y_low +1, y_high - 1)
-          returned = true
+          obstruction = true
         end
       end
     end
-    returned
+    obstruction
   end
 
 
@@ -57,20 +57,19 @@ class Piece < ActiveRecord::Base
       x_low = x1
       x_high = x2
     end
-
+    obstruction = false
     if Piece.any?
       Piece.all.each do |piece|
         x_abs = (piece.x - x1).abs
         y_abs = (piece.y - y1).abs
-        if x_abs == y_abs && piece.x.between?(x_low, x_high)
-          return true
-        else
-          return false
+        if x_abs == y_abs && piece.x.between?(x_low + 1, x_high -1)
+          obstruction = true
         end
       end
     else
-      return false
+      obstruction = false
     end
+    obstruction
   end
 
   def space_available? (x,y)
