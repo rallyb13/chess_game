@@ -29,4 +29,5 @@ class Game < ActiveRecord::Base
       Piece.create(x: 3, y: 8, white: false, type: "Bishop", game_id: self.id)
       Piece.create(x: 6, y: 8, white: false, type: "Bishop", game_id: self.id)
     end
+
 end

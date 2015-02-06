@@ -3,6 +3,9 @@ Bundler.require :default
 Dir[File.dirname(__FILE__) + "/lib/*.rb"].each { |file| require file }
 
 get '/' do
+  Game.all.each do |game|
+    game.destroy
+  end
   Game.create
   erb :index
 end
