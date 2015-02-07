@@ -101,6 +101,34 @@ describe Piece do
     end
   end
 
+  describe '#promotion?' do
+    it 'will recognize when a pawn has reached the end of the board' do
+      piece1 = Piece.create(x:8, y:7, white: true, type: "Pawn")
+      piece1.move_it(8,8)
+      expect(piece1.promotion?).to eq(true)
+    end
+
+    it 'will recognize that a rook cannot be promoted' do
+      piece1 = Piece.create(x:8, y:7, white: true, type: "Rook")
+      piece1.move_it(8,8)
+      expect(piece1.promotion?).to eq(false)
+    end
+
+    it 'will recognize that a pawn cannot (yet) be promoted' do
+      piece1 = Piece.create(x:8, y:6, white: true, type: "Pawn")
+      piece1.move_it(8,7)
+      expect(piece1.promotion?).to eq(false)
+    end
+  end
+
+  describe('#promote') do
+    it 'will change the promote the pawn to a selected piece' do
+      pawn1 = Piece.create(x:8, y:7, white: true)
+      pawn1.move_it(8,8)
+      pawn1.promote("Rook")
+      expect(pawn1.type).to eq("Rook")
+    end
+  end
 
 
 

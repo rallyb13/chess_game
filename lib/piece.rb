@@ -123,5 +123,16 @@ class Piece < ActiveRecord::Base
     self.update(x:destination_x, y:destination_y)
   end
 
+  def promotion?
+    if self.type == "Pawn"
+      (self.y == 1) | (self.y == 8) == true
+    else
+      return false
+    end
+  end
+
+  def promote (new_piece)
+    self.update(type: new_piece)
+  end
 
 end
