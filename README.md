@@ -45,9 +45,9 @@ Zarro Boogs
 ```
 ###Authors
 
-Benjamin Herson
-Jackie Fletcher
-Alex Kaufman
+Benjamin Herson  
+Jackie Fletcher  
+Alex Kaufman  
 Gabe Finch
 
 ####MIT License
