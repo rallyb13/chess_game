@@ -6,6 +6,7 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem 'pry'
 gem 'pg'
+gem 'heroku'
 
 group :test do
   gem 'rspec'
