@@ -1,0 +1,16 @@
+<script type="text/javascript">
+  $('#chessboard').prepend(
+    '<div id="pawn-promotion">' +
+      '<form action="/promote" method="post">' +
+        '<input type="hidden" name="piece" value="<%= @piece.id %>" >' +
+        '<select name="promotion_piece">' +
+          '<option value="Queen">Queen</option>' +
+          '<option value="Bishop">Bishop</option>' +
+          '<option value="Knight">Knight</option>' +
+          '<option value="Rook">Rook</option>' +
+        '</select>' +
+        '<button id="button" action="submit" class="btn btn-success">Promote</button>' +
+      '</form>' +
+    '</div>'
+  );
+</script>

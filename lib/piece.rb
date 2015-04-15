@@ -124,8 +124,8 @@ class Piece < ActiveRecord::Base
   end
 
   def promotion?
-    if self.type == "Pawn"
-      (self.y == 1) | (self.y == 8) == true
+    if self.type == "Pawn" && ((self.y == 1) || (self.y == 8))
+      true
     else
       return false
     end

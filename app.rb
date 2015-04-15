@@ -25,7 +25,10 @@ post '/game' do
   piece = Piece.find(params.fetch('piece').to_i)
   if piece.move?(x_value, y_value)
     piece.move_it(x_value,y_value)
-# if piece.promotion?
+      if piece.promotion?
+        @piece = piece
+        erb :pawn_promotion
+      end
     Game.first.turn
     redirect '/game'
   else
@@ -35,4 +38,12 @@ post '/game' do
     @white_pieces = Piece.all.where(white: true)
     erb :game
   end
+end
+
+post '/promote' do
+  new_piece = params.fetch('promotion_piece')
+  piece = Piece.find(params.fetch('piece').to_i)
+  piece.promote(new_piece)
+  Game.first.turn
+  redirect '/game'
 end

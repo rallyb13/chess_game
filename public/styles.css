@@ -42,6 +42,10 @@ span.glyphicon {
   background-image: url(/grain_light.jpeg);
 }
 
+#pawn-promotion {
+  text-align: center;
+}
+
 .yin {
   color: white;
 }

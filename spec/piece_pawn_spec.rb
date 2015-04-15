@@ -78,6 +78,11 @@ describe Pawn do
       pawn1 = Pawn.create(x:2, y:2, white:true)
       expect(pawn1.move?(3,4)).to eq(false)
     end
+
+    it "will return true if pawn reaches end of board" do
+      pawn = Pawn.create(x:1, y:8, white:true)
+      expect(pawn.promotion?).to eq(true)
+    end
   end
 
 end
