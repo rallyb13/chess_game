@@ -1,6 +1,14 @@
 require 'bundler/setup'
 Bundler.require :default
-Dir[File.dirname(__FILE__) + "/lib/*.rb"].each { |file| require file }
+require './lib/piece'
+require './lib/piece_bishop'
+require './lib/piece_king'
+require './lib/piece_knight'
+require './lib/piece_pawn'
+require './lib/piece_queen'
+require './lib/piece_rook'
+require './lib/game'
+
 # also_reload "./lib/*/**.rb"
 
 get '/' do
