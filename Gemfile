@@ -6,7 +6,12 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem 'pry'
 gem 'pg'
-gem 'heroku'
+gem 'cowsay'
+gem 'rack'
+
+gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'spring',        group: :development
+gem 'puma'
 
 group :test do
   gem 'rspec'
