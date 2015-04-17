@@ -30,7 +30,7 @@ end
 post '/game' do
   x_value = params.fetch('x_value').to_i
   y_value = params.fetch('y_value').to_i
-  if piece = Piece.find(params.fetch('piece').to_i)
+  if piece = Piece.find(params.fetch('piece').to_i) && piece.white == Game.first.white_turn
     if piece.move?(x_value, y_value)
       piece.move_it(x_value,y_value)
   # if piece.promotion?
