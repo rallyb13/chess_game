@@ -36,7 +36,6 @@ post '/game' do
         piece.move_it(x_value,y_value)
     # if piece.promotion?
         Game.first.turn
-        redirect '/game'
       else
         @message = "Invalid move! Try again."
         @game = Game.first
@@ -45,7 +44,6 @@ post '/game' do
         erb :game
       end
     end
-  else
-    redirect '/game'
   end
+  redirect '/game'
 end
