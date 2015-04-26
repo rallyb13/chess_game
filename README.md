@@ -1,6 +1,6 @@
 #Active Record Chess Game
-A chess game using ActiveRecord and Sinatra written over three days by four folks
-as an exercise for Epicodus programming school.
+A chess game utilizing Ruby, Sinatra, and TDD that was written over three days by four folks
+as at the Epicodus coding bootcamp.
 
 ##Setup Instructions:
 
